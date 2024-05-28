@@ -12,7 +12,7 @@ do
     Console.WriteLine("3-Multiplicar");
     Console.WriteLine("4-Dividir");
     Console.WriteLine("5-Limpiar");
-    Console.WriteLine("Salir -> Presione cualquier tecla");
+    Console.WriteLine("Salir -> Presione cualquier otra tecla");
     Console.Write("\nIngrese opcion: ");
     opcion = ingresaEntero();
     switch (opcion)
@@ -28,13 +28,39 @@ do
             Console.ReadKey();
             break;
         case 2:
+            valorAntesDeOperar=calcula.Resultado;
+            Console.Write("\nValor actual: "+valorAntesDeOperar);
+            Console.Write("\nIngrese numero que desea restar: ");
+            x = ingresarNumeroReal();
+            calcula.Restar(x);
+            Console.WriteLine("\nEl resultado de "+valorAntesDeOperar+" - "+x+" es: "+calcula.Resultado);
+            Console.Write("\nPrecione una tecla para continuar\t");
+            Console.ReadKey();
         break;
       case 3:
+            valorAntesDeOperar=calcula.Resultado;
+            Console.Write("\nValor actual: "+valorAntesDeOperar);
+            Console.Write("\nIngrese numero por el que desea multiplicar: ");
+            x = ingresarNumeroReal();
+            calcula.Multiplicar(x);
+            Console.WriteLine("\nEl resultado de "+valorAntesDeOperar+" * "+x+" es: "+calcula.Resultado);
+            Console.Write("\nPrecione una tecla para continuar\t");
+            Console.ReadKey();
         break;
       case 4:
+            valorAntesDeOperar=calcula.Resultado;
+            Console.Write("\nValor actual: "+valorAntesDeOperar);
+            Console.Write("\nIngrese numero por el que desea dividir: ");
+            do{
+              x = ingresarNumeroReal();
+            } while(x==0);
+            calcula.Dividir(x);
+            Console.WriteLine("\nEl resultado de "+valorAntesDeOperar+" / "+x+" es: "+calcula.Resultado);
+            Console.Write("\nPrecione una tecla para continuar\t");
+            Console.ReadKey();
         break;
       default:
-        Console.WriteLine("\nOpcion no valida. Saliendo del programa");
+        Console.WriteLine("\nSaliendo del programa...");
         return 0; //Termina el programa
     }
 } while (opcion==1 || opcion==2 || opcion==3 || opcion==4);
