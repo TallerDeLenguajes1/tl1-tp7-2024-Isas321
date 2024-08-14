@@ -51,9 +51,9 @@ public class Empleado{
     int antiguedad;
 
     fecha_actual = DateTime.Now;
-    antiguedad = fecha_actual.Year-fecha_ingreso.Year;
+    antiguedad = fecha_actual.Year-Fecha_ingreso.Year;
 
-    if(fecha_ingreso.Date > fecha_actual.AddYears(-antiguedad)){ //Compara solo los dias, con AddYears -antiguedad quedan en el mismo año
+    if(Fecha_ingreso.Date > fecha_actual.AddYears(-antiguedad)){ //Compara solo los dias, con AddYears -antiguedad quedan en el mismo año
       antiguedad--;
     }
 
@@ -63,20 +63,34 @@ public class Empleado{
     return antiguedad;
   }
 
-public int CalcularEdad(DateTime fechaNacimiento)
-{
-    DateTime fechaActual = DateTime.Now;
-    int edad = fechaActual.Year - fechaNacimiento.Year;
+  public int CalcularEdad()
+  {
+      DateTime fechaActual = DateTime.Now;
+      int edad = fechaActual.Year - Fecha_nac.Year;
 
-    if (fechaNacimiento.Date > fechaActual.AddYears(-edad))
+      if (Fecha_nac.Date > fechaActual.AddYears(-edad))
+      {
+          edad--;
+      }
+
+      if(edad<0){
+        edad = 0;
+      }
+
+      return edad;
+  }
+
+  public int AniosParaJubilarse(){
+    int edadActual = CalcularEdad();
+    int edadJubilacion = 65; 
+
+    int aniosFaltantes = edadJubilacion - edadActual;
+
+    if (aniosFaltantes < 0)
     {
-        edad--;
+        aniosFaltantes = 0;
     }
 
-    if(edad<0){
-      edad = 0;
-    }
-
-    return edad;
-}
+    return aniosFaltantes;
+  }
 }
