@@ -1,5 +1,6 @@
 ﻿using System;
 using EspacioCalculadora;
+using EspacioEmpleados;
 //Enu define un dominio, define los tio de dato
 
 class Program{
@@ -24,6 +25,43 @@ class Program{
 
             case 2:
                 Console.WriteLine("Has seleccionado Administracion de empleados.");
+
+                List<Empleado> empleados = new List<Empleado>();
+                for (int i = 0; i < 3; i++)
+                {
+                  Console.Write("Ingresar datos del empleado"+(i+1)+"\n");
+
+                  Console.Write("Nombre: ");
+                  string nombre = Console.ReadLine();
+
+                  Console.Write("Apellido: ");
+                  string apellido = Console.ReadLine();
+
+                  Console.Write("Fecha de nacimiento (yyyy-mm-dd): ");
+                  DateTime fecha_nac = DateTime.Parse(Console.ReadLine());
+
+                  Console.Write("Estado civil (C para casado, S para soltero): ");
+                  char estado_civil = char.ToUpper(Console.ReadLine()[0]);
+
+                  Console.Write("Fecha de ingreso (yyyy-mm-dd): ");
+                  DateTime fecha_ingreso = DateTime.Parse(Console.ReadLine());
+
+                  Console.Write("Sueldo básico: ");
+                  double sueldo_basico = double.Parse(Console.ReadLine());
+
+                  Console.Write("Selecciona el cargo \n(0-Auxiliar, 1-Administrativo, 2-Ingeniero, 3-Especialista, 4-Investigador): ");
+                  Empleado.Cargos cargo = (Empleado.Cargos)int.Parse(Console.ReadLine());
+
+                  Empleado empleado = new Empleado(nombre, apellido, fecha_nac, estado_civil, fecha_ingreso, sueldo_basico, cargo);
+                  empleados.Add(empleado);
+                }
+
+                Console.WriteLine("Los empleados cargados son: ");
+                foreach (var empleado in empleados)
+                {
+                  empleado.mostrarEmpleado();
+                }
+
                 break;
             
             case 0:
@@ -41,7 +79,7 @@ class Program{
             Console.ReadKey();
         }
 
-    } while (opcionPrincipal != 0); // Repetir hasta que el usuario elija salir      
+    } while (opcionPrincipal != 0); 
   }
 
   static void CalculadoraBasica()
