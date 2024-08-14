@@ -62,4 +62,21 @@ public class Empleado{
     }
     return antiguedad;
   }
+
+public int CalcularEdad(DateTime fechaNacimiento)
+{
+    DateTime fechaActual = DateTime.Now;
+    int edad = fechaActual.Year - fechaNacimiento.Year;
+
+    if (fechaNacimiento.Date > fechaActual.AddYears(-edad))
+    {
+        edad--;
+    }
+
+    if(edad<0){
+      edad = 0;
+    }
+
+    return edad;
+}
 }
