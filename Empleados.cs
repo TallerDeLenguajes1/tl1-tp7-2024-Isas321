@@ -46,7 +46,7 @@ public class Empleado{
     Console.WriteLine($"Cargo: {Cargo}");
   }
 
-  public int antiguedad_empleado(){
+  public int Antiguedad(){
     DateTime fecha_actual;
     int antiguedad;
 
@@ -63,7 +63,7 @@ public class Empleado{
     return antiguedad;
   }
 
-  public int CalcularEdad()
+  public int Edad()
   {
       DateTime fechaActual = DateTime.Now;
       int edad = fechaActual.Year - Fecha_nac.Year;
@@ -81,7 +81,7 @@ public class Empleado{
   }
 
   public int AniosParaJubilarse(){
-    int edadActual = CalcularEdad();
+    int edadActual = Edad();
     int edadJubilacion = 65; 
 
     int aniosFaltantes = edadJubilacion - edadActual;
@@ -92,5 +92,30 @@ public class Empleado{
     }
 
     return aniosFaltantes;
+  }
+
+  public double Salario(){
+    double adicional = 0, salario;
+    int antiguedad = Antiguedad();
+
+    if (antiguedad <= 20)
+    {
+        adicional = antiguedad * 0.01 * Sueldo_basico;
+    }
+    else
+    {
+        adicional = 20 * 0.01 * Sueldo_basico + 0.25 * (antiguedad - 20) * Sueldo_basico;
+    }
+
+    if(Cargo == Cargos.Ingeniero || Cargo == Cargos.Especialista){
+      adicional = 1.5*adicional;
+    }
+
+    if(Estado_civil == 'C' || Estado_civil == 'c'){
+      adicional += 150000; 
+    }
+
+    salario = Sueldo_basico + adicional;
+    return salario;
   }
 }
