@@ -36,4 +36,13 @@ public class Empleado{
       Sueldo_basico = sueldo_basico;
       Cargo = cargo;
   }
+
+  public void mostrarEmpleado(){
+    Console.WriteLine($"Apellido y nombre: {Apellido}, {Nombre}");
+    Console.WriteLine($"Fecha de nacimiento: {Fecha_nac}");
+    Console.WriteLine($"Estado civil: {Estado_civil}");
+    Console.WriteLine($"Fecha de ingreso: {Fecha_ingreso}");
+    Console.WriteLine($"Sueldo basico: {Sueldo_basico}");
+    Console.WriteLine($"Cargo: {Cargo}");
+  }
 }
