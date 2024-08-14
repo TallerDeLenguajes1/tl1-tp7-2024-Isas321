@@ -45,4 +45,21 @@ public class Empleado{
     Console.WriteLine($"Sueldo basico: {Sueldo_basico}");
     Console.WriteLine($"Cargo: {Cargo}");
   }
+
+  public int antiguedad_empleado(){
+    DateTime fecha_actual;
+    int antiguedad;
+
+    fecha_actual = DateTime.Now;
+    antiguedad = fecha_actual.Year-fecha_ingreso.Year;
+
+    if(fecha_ingreso.Date > fecha_actual.AddYears(-antiguedad)){ //Compara solo los dias, con AddYears -antiguedad quedan en el mismo año
+      antiguedad--;
+    }
+
+    if(antiguedad<0){
+      antiguedad = 0;
+    }
+    return antiguedad;
+  }
 }
