@@ -8,7 +8,7 @@ class Program{
     int opcionPrincipal;
     do
     {
-        Console.WriteLine("Menu:");
+        Console.WriteLine("\n\nMenu:");
         Console.WriteLine("1. Calculadora");
         Console.WriteLine("2. Administracion de empleados");
         Console.WriteLine("0. Salir");
@@ -24,6 +24,7 @@ class Program{
                 break;
 
             case 2:
+                double totalEnSalarios = 0, salario;
                 Console.WriteLine("Has seleccionado Administracion de empleados.");
 
                  Random random = new Random();
@@ -67,9 +68,12 @@ class Program{
                 {
                   Console.WriteLine();
                   empleado.mostrarEmpleado();
-                  Console.WriteLine($"Salario: {empleado.Salario()}");
+                  salario = empleado.Salario();
+                  totalEnSalarios += salario; 
+                  Console.WriteLine($"Salario: {salario}");
                 }
 
+                Console.WriteLine($"\n\nTotal en salarios de empleados: {totalEnSalarios}\n\n");
                 break;
             
             case 0:
