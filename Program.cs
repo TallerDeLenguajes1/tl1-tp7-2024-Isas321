@@ -67,6 +67,7 @@ class Program{
                 {
                   Console.WriteLine();
                   empleado.mostrarEmpleado();
+                  Console.WriteLine($"Salario: {empleado.Salario()}");
                 }
 
                 break;
