@@ -26,31 +26,37 @@ class Program{
             case 2:
                 Console.WriteLine("Has seleccionado Administracion de empleados.");
 
+                 Random random = new Random();
+                string[] nombres = { "Juan", "Pedro", "Luis", "María", "Ana" };
+                string[] apellidos = { "Gómez", "Pérez", "Rodríguez", "López", "Martínez" };
+                DateTime[] fechasNac = {
+                    new DateTime(1985, 3, 12),
+                    new DateTime(1990, 7, 24),
+                    new DateTime(1982, 11, 3),
+                    new DateTime(1975, 5, 15),
+                    new DateTime(2000, 2, 28)
+                };
+                char[] estadosCiviles = { 'C', 'S' };
+                DateTime[] fechasIngreso = {
+                    new DateTime(2010, 1, 10),
+                    new DateTime(2015, 3, 5),
+                    new DateTime(2020, 8, 20),
+                    new DateTime(2012, 9, 13),
+                    new DateTime(2018, 12, 1)
+                };
+                double[] sueldosBasicos = { 30000, 40000, 50000, 60000, 70000 };
+
                 List<Empleado> empleados = new List<Empleado>();
                 for (int i = 0; i < 3; i++)
                 {
-                  Console.Write("Ingresar datos del empleado"+(i+1)+"\n");
 
-                  Console.Write("Nombre: ");
-                  string nombre = Console.ReadLine();
-
-                  Console.Write("Apellido: ");
-                  string apellido = Console.ReadLine();
-
-                  Console.Write("Fecha de nacimiento (yyyy-mm-dd): ");
-                  DateTime fecha_nac = DateTime.Parse(Console.ReadLine());
-
-                  Console.Write("Estado civil (C para casado, S para soltero): ");
-                  char estado_civil = char.ToUpper(Console.ReadLine()[0]);
-
-                  Console.Write("Fecha de ingreso (yyyy-mm-dd): ");
-                  DateTime fecha_ingreso = DateTime.Parse(Console.ReadLine());
-
-                  Console.Write("Sueldo básico: ");
-                  double sueldo_basico = double.Parse(Console.ReadLine());
-
-                  Console.Write("Selecciona el cargo \n(0-Auxiliar, 1-Administrativo, 2-Ingeniero, 3-Especialista, 4-Investigador): ");
-                  Empleado.Cargos cargo = (Empleado.Cargos)int.Parse(Console.ReadLine());
+                  string nombre = nombres[random.Next(nombres.Length)];
+                  string apellido = apellidos[random.Next(apellidos.Length)];
+                  DateTime fecha_nac = fechasNac[random.Next(fechasNac.Length)];
+                  char estado_civil = estadosCiviles[random.Next(estadosCiviles.Length)];
+                  DateTime fecha_ingreso = fechasIngreso[random.Next(fechasIngreso.Length)];
+                  double sueldo_basico = sueldosBasicos[random.Next(sueldosBasicos.Length)];
+                  Empleado.Cargos cargo = (Empleado.Cargos)random.Next(Enum.GetValues(typeof(Empleado.Cargos)).Length);
 
                   Empleado empleado = new Empleado(nombre, apellido, fecha_nac, estado_civil, fecha_ingreso, sueldo_basico, cargo);
                   empleados.Add(empleado);
@@ -59,6 +65,7 @@ class Program{
                 Console.WriteLine("Los empleados cargados son: ");
                 foreach (var empleado in empleados)
                 {
+                  Console.WriteLine();
                   empleado.mostrarEmpleado();
                 }
 
